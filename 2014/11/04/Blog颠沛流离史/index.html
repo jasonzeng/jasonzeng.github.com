@@ -1,0 +1,375 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Blog颠沛流离史 | ZengJie&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Zeng Jie">
+    
+    <meta name="description" content="本站使用gitcafe/github的page服务进行渲染。开篇先列举一下自己目前为止使用过的博客：  
+
+google的Blogspot:墙的牺牲品，太久没有使用地址我都给忘了。  
+
+点点：网站CEO都放弃该产品了，我没有理由继续   
+
+farbox：很有新意的产品，使用自己的网盘作为虚拟网页">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="ZengJie&#39;s Blog" title="ZengJie&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="ZengJie&#39;s Blog">ZengJie&#39;s Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.v4mind.me">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/11/04/Blog颠沛流离史/" title="Blog颠沛流离史" itemprop="url">Blog颠沛流离史</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.v4mind.me" title="Zeng Jie">Zeng Jie</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-11-04T05:58:49.000Z" itemprop="datePublished">Nov 4 2014</time>
+    Updated:<time datetime="2014-11-04T08:29:40.000Z" itemprop="dateModified">Nov 4 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>本站使用gitcafe/github的page服务进行渲染。开篇先列举一下自己目前为止使用过的博客：  </p>
+<ul>
+<li><p>google的Blogspot:墙的牺牲品，太久没有使用地址我都给忘了。  </p>
+</li>
+<li><p>点点：网站CEO都放弃该产品了，我没有理由继续   </p>
+</li>
+<li><p>farbox：很有新意的产品，使用自己的网盘作为虚拟网页空间。刚刚开始使用习惯，更新了几篇文章，结果GFW把Dropbox给搞掉了，GFW真的是阻碍生产力和创造力的第一阻力；</p>
+</li>
+<li><p>CSDN：简单的写了几篇软件使用的说明，然后，然后就没有然后了，究其原因还是懒，<a href="http://blog.csdn.net/zengjie136" target="_blank" rel="external">且行且珍惜</a>  </p>
+</li>
+<li><p>简书：尝试性质的在上面完成了第一篇文章，因为那段时间阅读的《断离舍》有点感触，马上奋笔疾书，完成了一片推荐还行的文章《<a href="http://www.jianshu.com/p/ffb927561ab0" target="_blank" rel="external">不在断离舍中正常，就在囤积欲中变态</a>》，后来顺着这篇带来的荣誉感惯性还写了几篇，但是只能算是自己的喃喃私语。后来还是没有没有后来了。  </p>
+</li>
+<li><p>自己搭建wordpress网站，顺带能够学（bei）习（lve）一下各种Web开发，算是自己的一个实验空间吧。<br>DigitalOcean还算是一个比较稳定的VPS，性价比不错，墙内的观众们最好还是使用San Francisco的服务器，实际测试刚建好第一天速度还行平均ping值200~300ms之间,但是各种丢包忍不了，最严重有20%的丢包率。第二天以后开始好转，现在速度还能接受。第一次申请这种VPS服务，结果注册第一天就中奖需要递交身份证验证，这个待遇可不是每个人都有的，然后在尝试建立第二个droplet的时候受阻（需要绑定信用卡），然后在使用相同的paypal帐号进行不同DO帐号注册时候受阻（需要事先提交工单，和客服说明），在这些过程中我深刻的认识到了英语的重要性以及，自己的渣渣英语。下面主要说一下在DO上<strong>建立wordpress的注意事项</strong>：  </p>
+<ul>
+<li>DO建立wordpress站点还是很方便的，一键建立VPS，登陆ssh，查看WORDPRESS文件中的wordpress后台密码，然后按照说明进行设计即可。</li>
+<li>替换默认的apache服务，建议更换为ngnix服务，这个会快很多。</li>
+<li>如果想尝试DO的朋友可以点击这个<a href="https://www.digitalocean.com/?refcode=0852c997d05e" target="_blank" rel="external">推荐链接</a>。</li>
+<li>这个WordPress的写作空间还必须在网页后台，实在是感觉是上个世纪的产物，我还是忍无可忍的转向了GitPage。  </li>
+</ul>
+</li>
+<li><p>GitPage服务：使用github的page服务渲染静态网页，比较适合程序员进行博客发布等工作（因为各种原因速度实在是无法忍受，所以我转向了gitcafe托管）。</p>
+<ul>
+<li>具体的搭建过程见<a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">github_pages与Hexo教程</a>.</li>
+</ul>
+</li>
+</ul>
+<p>总体上blog是为了更好地记录自己的想法，发出自己的声音，工具只是应该作为辅助，如果以后还想学习服务器的话，我还会把blog搭建在VPS上。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/随笔-水/">随笔&水</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/随笔/">随笔</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.v4mind.me/2014/11/04/Blog颠沛流离史/" data-title="Blog颠沛流离史 | ZengJie&#39;s Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/随笔-水/" title="随笔&amp;水">随笔&amp;水<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/随笔-水/" style="font-size: NaNpx;">随笔&水</a>
+    </div>
+  </div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		<a href="http://weibo.com/1284077072" target="_blank" title="weibo"></a>
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://www.v4mind.me" target="_blank" title="Zeng Jie">Zeng Jie</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"zengjie"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+  </body>
+</html>
