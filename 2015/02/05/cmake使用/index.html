@@ -1,0 +1,465 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>cmake使用 | ZengJie&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Zeng Jie">
+    
+    <meta name="description" content="cmake 总结
+交叉编译
+
+设置编译器CMAKE_FORCE_C_COMPILER($ENV{CROSS}gcc GNU)
+
+设置pkg-config执行的位置  set(PKG_CONFIG_EXECUTABLE $ENV{PKG_CONFIG})
+
+设置工程名  project(suma_mi">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="ZengJie&#39;s Blog" title="ZengJie&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="ZengJie&#39;s Blog">ZengJie&#39;s Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.v4mind.me">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/02/05/cmake使用/" title="cmake使用" itemprop="url">cmake使用</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://www.v4mind.me" title="Zeng Jie">Zeng Jie</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-02-05T02:45:51.000Z" itemprop="datePublished">Feb 5 2015</time>
+    Updated:<time datetime="2015-02-05T04:50:34.627Z" itemprop="dateModified">Feb 5 2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cmake_总结"><span class="toc-number">1.</span> <span class="toc-text">cmake 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#交叉编译"><span class="toc-number">1.1.</span> <span class="toc-text">交叉编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本功能"><span class="toc-number">1.2.</span> <span class="toc-text">基本功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#坑"><span class="toc-number">1.3.</span> <span class="toc-text">坑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#疑问"><span class="toc-number">1.5.</span> <span class="toc-text">疑问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主要参考资料"><span class="toc-number">1.6.</span> <span class="toc-text">主要参考资料</span></a></li></ol></li></ol>
+		</div>
+		
+		<h2 id="cmake_总结">cmake 总结</h2>
+<h3 id="交叉编译">交叉编译</h3>
+<ul>
+<li>设置编译器<pre><code><span class="function">CMAKE_FORCE_C_COMPILER</span>(<span class="variable">$ENV</span>{CROSS}gcc GNU)
+</code></pre></li>
+<li>设置pkg-config执行的位置  <pre><code><span class="keyword">set</span>(PKG_CONFIG_EXECUTABLE <span class="variable">$ENV</span>{PKG_CONFIG})
+</code></pre></li>
+<li>设置工程名  <pre><code><span class="function"><span class="title">project</span><span class="params">(suma_middleware)</span></span>
+</code></pre></li>
+<li>设置工程的相关变量<pre><code> <span class="keyword">set</span>(CMAKE_SYSTEM_NAME Linux)  
+ <span class="keyword">set</span>(CMAKE_SYSTEM_PROCESSOR mips)
+</code></pre></li>
+</ul>
+<h3 id="基本功能">基本功能</h3>
+<ul>
+<li>使用系统变量<br>  增加$ENV{xxx},使用系统变量xxx，因为目前使用的交叉编译的方法是使用source xxx.sh文件的方法将相关的变量增加到当前终端的系统变量中。所以需要大量的变量都是这种形式的。</li>
+<li>设置相关代码子目录<br>  按照分层的结构，比如在下一层的src中有代码，使用如下的方式增加：  <pre><code><span class="function"><span class="title">add_subdirectory</span><span class="params">(xxx)</span>  </span>
+</code></pre>  <strong>以上方法需要确保xxx目录中有CMakcLists.txt文件。</strong>  </li>
+</ul>
+<ul>
+<li><p>设置头文件查找位置<br>  cmake文档中使用  </p>
+<pre><code><span class="function"><span class="title">include_directories</span><span class="params">(xxx)</span></span>
+</code></pre><p>  目前我的方法是使用:</p>
+<pre><code><span class="keyword">set</span>(dir)
+list(APPEND dir <span class="envvar">${dir1}</span>)
+<span class="keyword">include_directories</span>(<span class="envvar">${dir}</span>)
+</code></pre><p>  以上的方式来添加编译的选项</p>
+</li>
+<li><p>设置库搜索的位置</p>
+<pre><code><span class="function"><span class="title">link_directories</span><span class="params">(xxx)</span>  
+查找<span class="title">xxx</span>位置有无制定的库。</span>
+</code></pre><p>  <strong>可以按照头文件设置的方法进行管理，这样便于管理</strong></p>
+</li>
+<li><p>设置链接库的名字<br>  在生成对应的可执行程序（或者库）后面执行  </p>
+<pre><code><span class="keyword">target_link_libraries</span>(xxx <span class="envvar">${libname}</span>)
+</code></pre><p> <strong>小坑：注意此处增加libname cmake会自动脑补成lib${libname}.so (或者a)的文件名。</strong></p>
+</li>
+<li><p>使用pkg-config机制查找库</p>
+<ul>
+<li>配置package<br>  find_package(PkgConfig)  </li>
+<li><p>定义宏  </p>
+<pre><code><span class="keyword">macro</span>(detectpkgconfig lib LIBNAME)  
+
+pkg_check_modules(<span class="envvar">${LIBNAME}</span> REQUIRED <span class="envvar">${lib}</span> )  
+<span class="keyword">message</span>(STATUS 'lib is' <span class="envvar">${lib}</span>^^^ <span class="string">"${LIBNAME}_INCLUDE_DIRS is "</span> <span class="envvar">${${LIBNAME}</span>_INCLUDE_DIRS})  
+<span class="keyword">message</span>(STATUS <span class="envvar">${lib}</span>^^^ <span class="string">"${LIBNAME}_CFLAGS is "</span> <span class="envvar">${${LIBNAME}</span>_CFLAGS})  
+<span class="keyword">set</span>(<span class="envvar">${LIBNAME}</span>_INCLUDE_DIRS)  
+
+<span class="keyword">endmacro</span>(detectpkgconfig)  
+</code></pre></li>
+<li>调用宏  <pre><code><span class="function"><span class="title">detectpkgconfig</span><span class="params">(directfb <span class="variable">DIRECTFB</span>)</span>  </span>
+</code></pre></li>
+<li>增加库相关头文件位置  <pre><code><span class="keyword">include_directories</span>(<span class="envvar">${DIRECTFB_INCLUDE_DIRS}</span>)
+</code></pre></li>
+<li>增加库位置<pre><code><span class="keyword">link_directories</span>(<span class="envvar">${DIRECTFB__LIBRARY_DIRS}</span>)
+</code></pre></li>
+</ul>
+</li>
+<li><p>生成可执行文件  </p>
+<pre><code><span class="function"><span class="title">add_executable</span><span class="params">(demo main.c)</span></span>
+</code></pre></li>
+</ul>
+<ul>
+<li>生成库文件  <pre><code><span class="function"><span class="title">add_library</span><span class="params">(xxx  $<span class="tuple">{<span class="variable">SRC_LIST</span>}</span>)</span>  <span class="params">(有变量可以定义生成的为静态库或者是动态库)</span></span>
+</code></pre></li>
+</ul>
+<h3 id="坑">坑</h3>
+<ul>
+<li><p>链接顺序<br>  编写makefile的时候就容易踩得坑。现在也需要注意库的依赖顺序和添加顺序有关系。</p>
+</li>
+<li><p>查找特定名称的库<br>  因为之前项目中历史遗留问题生成的库没有按照标准的libxx.a或者libxx.so写法，需要手动制定特定的位置以及文件名。  </p>
+<pre><code>find_library(KERNEL_DRV NAMES xxx.<span class="operator">a</span> PATHS ${PROJECT_LIB_PATH})  
+
+在指定的 PROJECT_LIB_PATH路径下寻找xxx.<span class="operator">a</span>文件。生成变量保存在KERNEL_DRV_NAMES变量中。
+</code></pre></li>
+<li><p>编译的不同时期执行特定的脚本<br>  部分项目，因为属于不同项目组，没有统一编译的环境，而且他们也不准备花时间统一，所以用他们的最新的库，需要使用脚本来进行编译… …<br>  到此处，我用cmake改写的过程中深深的体会到了，队友的重要性。  </p>
+<pre><code>  add_custom_command(TARGET demo PRE_BUILD
+      COMMAND <span class="built_in">echo</span> ARGS <span class="string">"##### build xxx start ###### "</span>
+        WORKING_DIRECTORY <span class="variable">$ENV</span>{xxxxx})
+在WORKING_DIRECTORY 目录xxxxx中执行脚本。对象为demo，也就是说在编译demo之前执行以上脚本。但是cmake的文档中好像提到PRE_BUILD只在特定的编译环境有效果，所以在一般情况下，表示链接阶段。
+</code></pre></li>
+</ul>
+<h3 id="总结">总结</h3>
+<ul>
+<li>cmake 语法的特点，使用大写变量表示变量类型</li>
+<li>prefix机制，不少地方定义一个变量xxx以后.实际是定义了一个${prefix}，会有 cmake中，类似全局变量的${prefix}_xxx存在，可以直接调用。比如前面说的pkg-config<br>-</li>
+</ul>
+<h3 id="疑问">疑问</h3>
+<ul>
+<li>变量的作用域。</li>
+<li>变量的初始化，在改写工程过程中，初始化已经定义的list，不再有效。（类型设置有问题？？？）</li>
+<li>函数和marco的区别联系初看文档说是主要变量作用域的区别，暂时没来得及细看，目前使用的是marco</li>
+</ul>
+<h3 id="主要参考资料">主要参考资料</h3>
+<ul>
+<li><a href="http://www.cmake.org/cmake/help/v3.0" target="_blank" rel="external">http://www.cmake.org/cmake/help/v3.0</a></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/嵌入式/">嵌入式</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/开发/">开发</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.v4mind.me/2015/02/05/cmake使用/" data-title="cmake使用 | ZengJie&#39;s Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2014/11/08/饕客/"  title="饕客">
+ <strong>NEXT:</strong><br/> 
+ <span>饕客
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cmake_总结"><span class="toc-number">1.</span> <span class="toc-text">cmake 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#交叉编译"><span class="toc-number">1.1.</span> <span class="toc-text">交叉编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本功能"><span class="toc-number">1.2.</span> <span class="toc-text">基本功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#坑"><span class="toc-number">1.3.</span> <span class="toc-text">坑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#疑问"><span class="toc-number">1.5.</span> <span class="toc-text">疑问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主要参考资料"><span class="toc-number">1.6.</span> <span class="toc-text">主要参考资料</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/千字文/" title="千字文">千字文<sup>1</sup></a></li>
+		
+			<li><a href="/categories/开发/" title="开发">开发<sup>1</sup></a></li>
+		
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/嵌入式/" title="嵌入式">嵌入式<sup>1</sup></a></li>
+		
+			<li><a href="/tags/随笔-水/" title="随笔&amp;水">随笔&amp;水<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/嵌入式/" style="font-size: 10.00px;">嵌入式</a><a href="/tags/随笔-水/" style="font-size: 20.00px;">随笔&水</a>
+    </div>
+  </div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		<a href="http://weibo.com/1284077072" target="_blank" title="weibo"></a>
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2015 
+		
+		<a href="http://www.v4mind.me" target="_blank" title="Zeng Jie">Zeng Jie</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"zengjie"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+  </body>
+</html>
